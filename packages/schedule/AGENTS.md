@@ -2,6 +2,8 @@
 
 These rules supplement the repository and package instructions for `packages/schedule/*`.
 
+The schedule vocabulary belongs to the `interaction` context — [Interaction glossary](../../docs/contexts/interaction/GLOSSARY.md), one of the context glossaries indexed by [GLOSSARY-MAP.md](../../GLOSSARY-MAP.md).
+
 - Keep the `schedule` domain, backend routing, envelope, and whole-unit layout. Version 2 accepts version 1 through `compatibleVersions`; reads never write, and an edit stores the selected row in the current format. Current-version envelopes may contain untouched older rows. No importer or separate migration store.
 - Every timing record has one normal kind: `after`, `at`, `every`, `daily`, `weekly`, `cron`, or `rrule`. Cron expression and time zone stay authoritative. Shared `dsh-util-time` owns pure Cron/RRULE parsing and bounded occurrence arithmetic; Schedule owns task policy and domain errors.
 - Use one management API for Browser and Agent callers. Reads and deletion never activate a Session. Change notices run separately after commit as non-waking next-step messages to loaded involved Agents.

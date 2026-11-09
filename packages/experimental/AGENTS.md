@@ -2,6 +2,8 @@
 
 These rules supplement the [package rules](../AGENTS.md). The [experimental reference](README.md#status) defines experimental, optional, and Official status; the rules below define dependency isolation and promotion.
 
+`experimental/` is a status fence, not a context: a term is filed by subject in the owning context's glossary, and [GLOSSARY-MAP.md](../../GLOSSARY-MAP.md) indexes those glossaries.
+
 - A package belongs here only when its complete public contract is experimental or internal-only. An experimental option inside a release package stays with its owning product role.
 - Name a new package `@deepseek-ai/dsh-<name>`, never `@deepseek-ai/dsh-experimental-<name>`, and add its directory to `EXPERIMENTAL_PACKAGE_NAME_EXCEPTIONS` in [the experimental naming policy](../../scripts/experimental-package-policy.ts); isolation checks and plugin-record ownership recognize an unprefixed experimental name only through that map. A name with the `experimental` prefix must change when the package moves to a product group, which breaks every import, dependency entry, and configuration that names it. `pnpm run constraints` rejects the prefix outside `LEGACY_PREFIXED_EXPERIMENTAL_PACKAGE_DIRECTORIES`, which must not grow.
 - Packages join the dsh release family by default: omit `private` and set `publishConfig.access: public`. Only directories in `PRIVATE_EXPERIMENTAL_PACKAGE_DIRECTORIES` in [the publication policy](../../scripts/experimental-package-policy.ts) stay private: set `private: true` and omit `publishConfig`.

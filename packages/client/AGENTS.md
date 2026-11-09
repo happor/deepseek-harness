@@ -4,6 +4,8 @@ Rules for `packages/client/*` (the browser side of the dsh web GUI) plus its bui
 
 Packages here are named with the directory prefix: `@deepseek-ai/dsh-client-<name>`.
 
+The domain vocabulary of this layer is written down in the [web GUI glossary](../../docs/contexts/web-gui/GLOSSARY.md), one of the context glossaries indexed by [GLOSSARY-MAP.md](../../GLOSSARY-MAP.md).
+
 ## Slot and props discipline
 
 The [Slots reference](../../docs/subsystems/slots.md) owns the current design; these are the rules you must not violate when writing or reviewing client code:

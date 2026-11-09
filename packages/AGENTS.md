@@ -2,6 +2,8 @@
 
 These package-specific rules supplement the repo-wide [conventions](../AGENTS.md#conventions).
 
+Package vocabulary is written down per context under [docs/contexts/](../docs/contexts/README.md) and indexed by [GLOSSARY-MAP.md](../GLOSSARY-MAP.md): a package's terms live in the glossary of the context that owns them.
+
 - **Plugin exports:** service packages default-export their service class; function plugins named-export `name` / `inject` / `Config` / `apply` and have no default export. Mixing the forms makes the Loader discard the function plugin's namespace ([postmortem](../docs/postmortem/0001-acp-default-export-drops-inject.md)).
 - **Optional services use `ctx.get(name)`.** Reserve `ctx.<name>` for declared injections; the property proxy is topology-sensitive, while strict `ctx.get` reads the global service store ([postmortem](../docs/postmortem/0001-acp-default-export-drops-inject.md)).
 - **Product-visible plugins require a non-unit REAL-composition test.** Hand-built `ctx.plugin(...)` suites are insufficient. Boot test-only `cordis.yml` through the Loader and app/process; mock only external services or nondeterministic inputs and assert model-visible, durable, or user-visible output. Keep opt-ins out of shipped defaults. [Policy](../docs/testing.md).
